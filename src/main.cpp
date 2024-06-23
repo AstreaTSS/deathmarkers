@@ -200,6 +200,13 @@ class $modify(ModifiedPlayerObject, PlayerObject) {
 	void playerDestroyed(bool secondPlr) {
 		PlayerObject::playerDestroyed(secondPlr);
 
+		// globed compat, hacky way to see if this player is a remote player
+		// from https://github.com/dankmeme01/globed2/blob/12173f5eb5247b2fc363c1cdedbfb488b9177f26/src/hooks/player_object.hpp#L8
+		// is this value always to be the same?
+		if (this->getTag() == 3458738) {
+			return;
+		}
+
 		if (secondPlr) {
 			return;
 		}
